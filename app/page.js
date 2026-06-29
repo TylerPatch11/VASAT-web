@@ -1,31 +1,82 @@
+const IconMapPin = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+    <circle cx="12" cy="10" r="3"/>
+  </svg>
+);
+
+const IconGitBranch = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+    <line x1="6" x2="6" y1="3" y2="15"/>
+    <circle cx="18" cy="6" r="3"/>
+    <circle cx="6" cy="18" r="3"/>
+    <path d="M18 9a9 9 0 0 1-9 9"/>
+  </svg>
+);
+
+const IconShield = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+  </svg>
+);
+
+const IconDatabase = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+    <ellipse cx="12" cy="5" rx="9" ry="3"/>
+    <path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/>
+    <path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3"/>
+  </svg>
+);
+
+const IconBell = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+    <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+  </svg>
+);
+
+const IconLayers = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M12 2 2 7l10 5 10-5-10-5z"/>
+    <path d="m2 17 10 5 10-5"/>
+    <path d="m2 12 10 5 10-5"/>
+  </svg>
+);
+
 const capabilities = [
   {
     title: "Geospatial applications",
+    icon: <IconMapPin />,
     body: "Map infrastructure, assets, incidents and field activity using location-aware data.",
     tags: ["GIS", "PostGIS", "Spatial data"],
   },
   {
     title: "Workflow automation",
+    icon: <IconGitBranch />,
     body: "Move work from intake through review, assignment, escalation and completion.",
     tags: ["Jobs", "Scheduling", "Flows"],
   },
   {
     title: "Identity and access",
+    icon: <IconShield />,
     body: "Control user, team, contractor and service access across complex applications.",
     tags: ["SSO", "OAuth", "ACL"],
   },
   {
     title: "Data and integrations",
+    icon: <IconDatabase />,
     body: "Connect applications, databases and external systems through reusable APIs.",
     tags: ["REST", "GraphQL", "SDKs"],
   },
   {
     title: "Notifications",
+    icon: <IconBell />,
     body: "Deliver email, push and real-time updates to the people responsible for action.",
     tags: ["Email", "Push", "WebSockets"],
   },
   {
     title: "Storage and administration",
+    icon: <IconLayers />,
     body: "Manage files, images, configuration, data and browser-based administration.",
     tags: ["Storage", "Documents", "Admin UI"],
   },
@@ -59,28 +110,14 @@ function SectionHeading({ eyebrow, title, body }) {
   );
 }
 
-function MapPreview() {
+function HeroImage() {
   return (
-    <div className="map-preview" aria-label="Conceptual road defect operations dashboard">
-      <div className="map-canvas" aria-hidden="true">
-        <span className="road road-one" />
-        <span className="road road-two" />
-        <span className="road road-three" />
-        <span className="pin pin-one" />
-        <span className="pin pin-two" />
-        <span className="pin pin-three" />
-        <span className="pin pin-four" />
-      </div>
-      <aside className="map-panel">
-        <p className="card-label">Selected defect</p>
-        <h3>Road surface damage</h3>
-        <dl>
-          <div><dt>Priority</dt><dd><span className="status">High</span></dd></div>
-          <div><dt>Status</dt><dd>Awaiting review</dd></div>
-          <div><dt>Location</dt><dd>George Street</dd></div>
-        </dl>
-        <button className="button button-primary" type="button">Assign repair</button>
-      </aside>
+    <div className="hero-image-wrap">
+      <img
+        src="/images/gms-demo-poster.jpg"
+        alt="GMS geospatial platform showing 3D terrain analysis with annotations"
+        className="hero-image"
+      />
     </div>
   );
 }
@@ -103,7 +140,7 @@ export default function HomePage() {
               <a className="button button-secondary" href="#solutions">View use cases</a>
             </div>
           </div>
-          <MapPreview />
+          <HeroImage />
         </div>
       </section>
 
@@ -164,7 +201,7 @@ export default function HomePage() {
           <div className="three-column-grid">
             {capabilities.map((item) => (
               <article className="content-card" key={item.title}>
-                <div className="icon-tile" aria-hidden="true" />
+                <div className="icon-tile" aria-hidden="true">{item.icon}</div>
                 <h3>{item.title}</h3>
                 <p>{item.body}</p>
                 <div className="tag-row">
@@ -192,7 +229,20 @@ export default function HomePage() {
                 </li>
               ))}
             </ol>
-            <MapPreview />
+            <div className="solution-video">
+              <video
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                poster="/images/gms-demo-poster.jpg"
+                aria-label="GMS browser-based geospatial management platform demonstration"
+              >
+                <source src="/videos/gms-demo-web.mp4" type="video/mp4" />
+              </video>
+              <span className="solution-video__label">GMS Product Demo</span>
+            </div>
           </div>
         </div>
       </section>
