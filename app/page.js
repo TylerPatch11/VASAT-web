@@ -1,3 +1,5 @@
+import VASATPlatformCarousel from '../components/VASATPlatformCarousel';
+
 const IconMapPin = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
     <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
@@ -110,39 +112,10 @@ function SectionHeading({ eyebrow, title, body }) {
   );
 }
 
-function HeroImage() {
-  return (
-    <div className="hero-image-wrap">
-      <img
-        src="/images/gms-demo-poster.jpg"
-        alt="GMS geospatial platform showing 3D terrain analysis with annotations"
-        className="hero-image"
-      />
-    </div>
-  );
-}
-
 export default function HomePage() {
   return (
     <>
-      <section className="hero" id="top">
-        <div className="container hero-grid">
-          <div>
-            <p className="eyebrow">Application platform for government and enterprise</p>
-            <h1>Build complex digital services on a stronger foundation.</h1>
-            <p className="hero-lead">
-              Vasat brings together security, data, workflows, geospatial tools,
-              integrations, storage and administration—so organisations can deliver
-              tailored applications faster.
-            </p>
-            <div className="button-row">
-              <a className="button button-primary" href="#capabilities">Explore capabilities</a>
-              <a className="button button-secondary" href="#solutions">View use cases</a>
-            </div>
-          </div>
-          <HeroImage />
-        </div>
-      </section>
+      <VASATPlatformCarousel />
 
       <section className="section section-muted" id="platform">
         <div className="container">
